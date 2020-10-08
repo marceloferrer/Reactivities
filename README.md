@@ -1,7 +1,7 @@
 # Reactivities
 Simple application with .Net Core (v2.2), React (with Typescript) and Mobx
 
-1.Web API in .Net Core with Clean Architecture using the CQRS + Mediator pattern
+1.Web API in .Net Core with Clean Architecture using the CQRS + Mediator pattern </br>
 2.AutoMapper and MediatR packages in the .Net projects
 3.Entity Framework Core as the Object Relational Mapper
 4.ASPNET Core SignalR into an application for real time web communication
