@@ -3,7 +3,7 @@ import { Button, Container, Menu } from 'semantic-ui-react';
 import ActivityStore from '../../app/stores/activityStore';
 import { observer } from 'mobx-react-lite';
 
-export const NavBar: React.FC = ({}) => {
+export const NavBar: React.FC = () => {
     const activityStore = useContext(ActivityStore);
     return (
         <div>
