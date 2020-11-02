@@ -16,7 +16,6 @@ export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({match
         createActivity, 
         editActivity, 
         submitting, 
-        cancelFormOpen, 
         activity:initialFormState,
         loadActivity,
         clearActivity
@@ -73,7 +72,7 @@ export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({match
                     <Form.Input onChange={handleInputChange} name='city'  placeholder='City' value={activity.city}/>
                     <Form.Input onChange={handleInputChange} name='venue'  placeholder='Venue' value={activity.venue}/>
                     <Button loading={submitting} floated='right' positive type='submit' content='Submit'></Button>
-                    <Button onClick={cancelFormOpen} floated='right' type='button' content='Cancel'></Button>
+                    <Button onClick={() => history.push('/activities')} floated='right' type='button' content='Cancel'></Button>
                 </Form>
             </Segment>
         </div>
