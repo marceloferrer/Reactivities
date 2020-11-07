@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import {  Button, Card, Grid, Image } from 'semantic-ui-react'
+import {  Grid } from 'semantic-ui-react'
 import ActivityStore from '../../../app/stores/activityStore' 
 import { observer } from 'mobx-react-lite';
 import { RouteComponentProps } from 'react-router-dom';
@@ -33,7 +33,7 @@ export const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({
         <Grid>
             <Grid.Column width={10}>
                 <ActivityDetailedHeader activity={activity}></ActivityDetailedHeader>
-                <ActivityDetailedInfo></ActivityDetailedInfo>
+                <ActivityDetailedInfo activity={activity}></ActivityDetailedInfo>
                 <ActivityDetailedChat></ActivityDetailedChat>
             </Grid.Column>
             <Grid.Column width={6}>

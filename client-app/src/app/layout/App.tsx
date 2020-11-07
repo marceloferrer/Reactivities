@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Container } from 'semantic-ui-react'
 import NavBar from '../../features/nav/NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
-import ActivityStore from '../stores/activityStore'
 import { observer } from 'mobx-react-lite';
 import { Route, RouteComponentProps, withRouter } from 'react-router-dom';
 import HomePage from '../../features/home/HomePage';
