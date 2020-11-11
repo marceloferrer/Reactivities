@@ -1,6 +1,8 @@
 using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Errors;
 using FluentValidation;
 using MediatR;
 using Persistence;
@@ -44,8 +46,8 @@ namespace Application.Activities
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
 
-                if (activity==null)
-                    throw new Exception("Could not find activity");
+                 if (activity==null)
+                    throw new RestException(HttpStatusCode.NotFound, new {activity= "Not Found"});
                 
                 //The property could be null or even havent been send by the user, so we use the same value
                 activity.Title = request.Title ?? activity.Title;
