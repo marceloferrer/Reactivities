@@ -10,7 +10,8 @@ export const TextInput: React.FC<IProps> = ({
     width,
     type, 
     placeholder, 
-    meta: {touched, error}}) => {
+    meta: {touched, error}
+}) => {
     return (
         /*Validate if is touched and error is not null to boolean*/
         <Form.Field error={touched && !!error} type={type} width={width}>
