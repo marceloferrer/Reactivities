@@ -3,6 +3,7 @@ import { createContext, SyntheticEvent } from "react";
 import agent from "../api/agent";
 import { IActivity } from "../models/activity";
 import {makeObservable} from 'mobx';
+import {history} from '../..'
 
 configure({enforceActions: 'always'});
 
@@ -66,6 +67,7 @@ class ActivityStore {
                 runInAction(() => {
                     activity.date = new Date(activity.date)
                     this.activity = activity;
+                    this.activityRegistry.set(activity.id,activity);
                     this.loadingInitial = false;
                 })
                 return activity;
@@ -95,6 +97,7 @@ class ActivityStore {
                 this.activityRegistry.set(activity.id,activity);
                 this.submitting = false;
             });
+            history.push(`/activities/${activity.id}`)
         } catch (error){
             console.log(error);
             runInAction(() => {
@@ -112,6 +115,7 @@ class ActivityStore {
                 this.activity = activity;
                 this.submitting = false;
            });
+           history.push(`/activities/${activity.id}`)
         } catch (error) {
             console.log(error);
             runInAction(() => {
