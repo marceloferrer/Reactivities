@@ -32,7 +32,7 @@ export const ActivityDetailedHeader: React.FC<{activity: IActivity}> = ({activit
                     content={activity.title}
                     style={{ color: 'white' }}
                     />
-                    <p>{format(activity.date! ,'eeee do MMMM')}</p>
+                    <p>{format(activity.date ,'eeee do MMMM')}</p>
                     <p>
                     Hosted by <strong>Bob</strong>
                     </p>
