@@ -4,6 +4,7 @@ import agent from "../api/agent";
 import { IActivity } from "../models/activity";
 import {makeObservable} from 'mobx';
 import {history} from '../..'
+import { toast } from "react-toastify";
 
 configure({enforceActions: 'always'});
 
@@ -99,6 +100,7 @@ class ActivityStore {
             });
             history.push(`/activities/${activity.id}`)
         } catch (error){
+            toast.error('Error creating the activity');
             console.log(error);
             runInAction(() => {
                 this.submitting = false;
@@ -117,6 +119,7 @@ class ActivityStore {
            });
            history.push(`/activities/${activity.id}`)
         } catch (error) {
+            toast.error('Error editing the activity');
             console.log(error);
             runInAction(() => {
                 this.submitting = false;
