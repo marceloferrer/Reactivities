@@ -1,3 +1,4 @@
+using System.Text;
 using API.Middleware;
 using Application.Activities;
 using Application.Interfaces;
@@ -5,6 +6,7 @@ using Domain;
 using FluentValidation.AspNetCore;
 using Infrastructure.Security;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Persistence;
 
 namespace API
@@ -53,7 +56,17 @@ namespace API
             identityBuilder.AddEntityFrameworkStores<DataContext>();
             identityBuilder.AddSignInManager<SignInManager<AppUser>>();
 
-            services.AddAuthentication();
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Reactivities Secret Key"));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => 
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = key,
+                    ValidateAudience = false,
+                    ValidateIssuer = false
+                };
+            });
 
             services.AddScoped<IJwtGenerator, JwtGenerator>();
         }
@@ -68,8 +81,10 @@ namespace API
             }
 
             app.UseRouting();
-
             app.UseCors("CorsPolicy");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
