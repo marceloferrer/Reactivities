@@ -53,5 +53,6 @@ const User = {
 }
 
 export default {
-    Activities
+    Activities,
+    User
 }
