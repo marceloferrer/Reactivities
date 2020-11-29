@@ -9,7 +9,7 @@ import ActivityForm from '../../features/activities/form/ActivityForm';
 import ActivityDetails from '../../features/activities/details/ActivityDetails';
 import NotFound from './NotFound';
 import { ToastContainer } from 'react-toastify';
-import { loginForm } from '../../features/user/loginForm';
+import LoginForm from '../../features/user/LoginForm';
 
 const App: React.FC<RouteComponentProps> = ({location}) => {
   return (
@@ -27,7 +27,7 @@ const App: React.FC<RouteComponentProps> = ({location}) => {
                   key={location.key} 
                   path={['/createActivity','/manage/:id']} 
                   component={ActivityForm} />
-                  <Route path='/Login' component={loginForm}></Route>
+                  <Route path='/Login' component={LoginForm}></Route>
                 <Route component={NotFound} ></Route> 
               </Switch>
             </Container>
